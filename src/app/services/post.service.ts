@@ -19,14 +19,6 @@ export class PostService {
 		return this.http.post<Post>(this.postsUrl, post)
 	}
 
-	update(post: PostCreateInput): Observable<Post> {
-		return this.http.put<Post>(this.postsUrl, post)
-	}
-
-	delete(idPost: number): Observable<boolean> {
-		return this.http.delete<boolean>(`${this.postsUrl}/${idPost}`)
-	}
-
 	protected handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
 			console.error(`${operation} failed: ${error.message}`, error) // log to console

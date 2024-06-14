@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
 
-import { Post, PostCreateInput } from '../data/post'
+import { POSTS, Post, PostCreateInput } from '../data/post'
 import { environment } from '../environment/environment'
 
 @Injectable()
@@ -12,7 +12,7 @@ export class PostService {
 	constructor(private http: HttpClient) {}
 
 	getAll(): Observable<Post[]> {
-		return this.http.get<Post[]>(this.postsUrl)
+		return of(POSTS)
 	}
 
 	create(post: PostCreateInput): Observable<Post> {

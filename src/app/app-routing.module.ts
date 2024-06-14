@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
 import { PostListComponent } from './post-list/post-list.component'
-import { CreatePostFormComponent } from './create-post-form/create-post-form'
+import { CreatePostFormComponent } from './create-post-form/create-post-form.component'
 
 const routes: Routes = [
 	{ path: '', component: PostListComponent },
-	{ path: 'add-post', component: CreatePostFormComponent },
+	{ path: 'create-post', component: CreatePostFormComponent },
 ]
 
 @NgModule({

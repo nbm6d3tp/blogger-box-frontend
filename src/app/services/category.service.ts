@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
-import { Category, CategoryCreateInput } from '../data/category'
+import { CATEGORIES, Category, CategoryCreateInput } from '../data/category'
 import { Observable, catchError, of } from 'rxjs'
 import { environment } from '../environment/environment'
 
@@ -11,7 +11,7 @@ export class CategoryService {
 	constructor(private http: HttpClient) {}
 
 	getAll(): Observable<Category[]> {
-		return this.http.get<Category[]>(this.categoriesUrl)
+		return of(CATEGORIES)
 	}
 
 	protected handleError<T>(operation = 'operation', result?: T) {

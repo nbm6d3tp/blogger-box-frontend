@@ -1,0 +1,53 @@
+<div style="display: block; margin-bottom: 20px">
+	<form [formGroup]="form" class="needs-validation" autocomplete="off">
+		<div>
+			<label>Title :</label>
+			<input
+				type="text"
+				class="form-control"
+				formControlName="title"
+				[class.is-invalid]="title.invalid && title.touched"
+				[class.is-valid]="title.valid && title.touched"
+			/>
+			<div *ngIf="title?.invalid && title.touched" class="invalid-feedback text-danger">
+				<div *ngIf="title?.errors?.['required']">This field is required!</div>
+				<div *ngIf="title?.errors?.['minlength']">Minimum length is 5 characters</div>
+				<div *ngIf="title?.errors?.['maxlength']">Maximum length is 150 characters</div>
+			</div>
+		</div>
+		<div class="mt-3">
+			<label>Category :</label>
+			<select
+				class="form-control"
+				formControlName="category"
+				[class.is-invalid]="category.invalid && category.touched"
+				[class.is-valid]="category.valid && category.touched"
+			>
+				<option *ngFor="let category of categories" [value]="category.id">
+					{{ category.name }}
+				</option>
+			</select>
+			<div *ngIf="category?.invalid && category.touched" class="invalid-feedback text-danger">
+				<div *ngIf="category?.errors?.['required']">This field is required!</div>
+			</div>
+		</div>
+		<div class="mt-3">
+			<label>Content :</label>
+			<textarea
+				type="text"
+				class="form-control"
+				formControlName="content"
+				[class.is-invalid]="content.invalid && content.touched"
+				[class.is-valid]="content.valid && content.touched"
+			></textarea>
+			<div *ngIf="content?.invalid && content.touched" class="invalid-feedback text-danger">
+				<div *ngIf="content?.errors?.['required']">This field is required!</div>
+				<div *ngIf="content?.errors?.['maxlength']">Maximum length is 2500 characters</div>
+			</div>
+		</div>
+		<div style="display: flex; justify-content: flex-end; gap: 10px" class="mt-4 pt-2">
+			<button type="button" class="btn btn-outline-danger">Close</button>
+			<button type="submit" class="btn btn-success">Post message</button>
+		</div>
+	</form>
+</div>

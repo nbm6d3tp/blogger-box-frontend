@@ -9,6 +9,7 @@ import { Post } from '../data/post'
 })
 export class PostListComponent implements OnInit {
 	posts: Post[] = []
+	isLoading = false
 
 	constructor(private PostService: PostService) {}
 
@@ -17,9 +18,14 @@ export class PostListComponent implements OnInit {
 	}
 
 	loadPosts(): void {
-		this.PostService.getAll().subscribe(posts => {
-			this.posts = posts
-			console.log(posts)
+		this.isLoading = true
+		this.PostService.getAll().subscribe({
+			next: posts => {
+				this.posts = posts
+			},
+			complete: () => {
+				this.isLoading = false
+			},
 		})
 	}
 }

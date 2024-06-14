@@ -1,6 +1,6 @@
 import { Category } from './category'
 
-export type PostCreateInput = Omit<Post, 'id' | 'createdDate'>
+export type PostCreateInput = Omit<Post, 'id' | 'createdDate' | 'category'> & { categoryID: string }
 export interface Post {
 	id: string
 	title: string

@@ -11,12 +11,12 @@ export class CategoryService {
 	constructor(private http: HttpClient) {}
 
 	getAll(): Observable<Category[]> {
-		return of(CATEGORIES)
+		return this.http.get<Category[]>(this.categoriesUrl)
 	}
 
 	protected handleError<T>(operation = 'operation', result?: T) {
 		return (error: any): Observable<T> => {
-			console.error(`${operation} failed: ${error.message}`, error) // log to console
+			// console.error(`${operation} failed: ${error.message}`, error) // log to console
 			// Let the app keep running by returning an empty result.
 			return of(result as T)
 		}
